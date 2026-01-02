@@ -348,6 +348,12 @@ section{
 .wide-top h2{
   margin:0;
 }
+/* Status: vertical stack */
+.wide-grid-vertical{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:12px;
+}
 
 .wide-grid{
   display:grid;
