@@ -97,7 +97,7 @@ body{
 .hero-inner{
   display:grid;
   grid-template-columns: 1fr;
-  gap:24px;
+  gap:56px;
   align-items:start;
 }
 
@@ -250,7 +250,7 @@ body{
 }
 
 .section{
-  padding:64px 0;
+  padding:54px 0;
 }
 
 .section h2{
