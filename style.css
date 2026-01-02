@@ -11,10 +11,14 @@
   --radius: 18px;
   --radius2: 26px;
   --max: 1120px;
+
+  /* fixed topbar offset */
+  --topbar-h: 56px;
 }
 
 *{ box-sizing:border-box; }
 html,body{ height:100%; }
+
 body{
   margin:0;
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
@@ -23,6 +27,7 @@ body{
   overflow-x:hidden;
 }
 
+/* Animated background canvas */
 #bg{
   position:fixed;
   inset:0;
@@ -36,12 +41,23 @@ body{
   margin:0 auto;
 }
 
+/* Ensure content starts below fixed topbar */
+main{
+  padding-top: var(--topbar-h);
+}
+
+/* Anchor links should land below fixed topbar */
+section{
+  scroll-margin-top: calc(var(--topbar-h) + 16px);
+}
+
+/* Topbar (always visible) */
 .topbar{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 100;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:100;
   backdrop-filter: blur(14px);
   background: linear-gradient(
     to bottom,
@@ -55,8 +71,8 @@ body{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:96px 0;
-  gap:36px;
+  padding:14px 0; /* FIX: normal height */
+  gap:18px;
 }
 
 .brand{
@@ -96,19 +112,20 @@ body{
   color:var(--fg);
 }
 
+/* HERO */
 .hero{
   padding:64px 0 36px;
 }
 
 .hero-inner{
   display:grid;
-  grid-template-columns: 1fr;
-  gap:56px;
+  grid-template-columns: 1fr; /* your current layout (stacked) */
+  gap:72px;                  /* more space between hero blocks */
   align-items:start;
 }
 
 .hero h1{
-  margin:0 0 14px 0;
+  margin:0 0 18px 0;
   font-size: clamp(30px, 3.6vw, 48px);
   line-height:1.06;
   letter-spacing:-.6px;
@@ -118,7 +135,7 @@ body{
   display:flex;
   gap:10px;
   flex-wrap:wrap;
-  margin-bottom:14px;
+  margin-bottom:18px;
 }
 .badge{
   font-size:12px;
@@ -143,9 +160,9 @@ body{
 
 .cta{
   display:flex;
-  gap:10px;
+  gap:14px;          /* more space between buttons */
   flex-wrap:wrap;
-  margin:14px 0 10px;
+  margin:18px 0 16px; /* more space around buttons block */
 }
 
 .btn{
@@ -184,6 +201,7 @@ body{
   color:var(--muted2);
 }
 
+/* Glass panel (System concept) */
 .glass-panel{
   border-radius: var(--radius2);
   background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
@@ -246,17 +264,18 @@ body{
 }
 
 .hint{
-  margin-top:10px;
+  margin-top:12px;
   font-size:12px;
   color:var(--muted2);
-  padding:10px 12px;
+  padding:12px 12px;
   border-radius:14px;
   border:1px solid rgba(255,255,255,.10);
   background: rgba(0,0,0,.16);
 }
 
+/* SECTIONS */
 .section{
-  padding:54px 0;
+  padding:72px 0; /* more space between sections */
 }
 
 .section h2{
@@ -304,9 +323,10 @@ body{
   background: rgba(0,0,0,.16);
 }
 
+/* Wide section (Status/Contact) */
 .section-wide{
-  padding-top:34px;
-  padding-bottom:64px;
+  padding-top:54px;
+  padding-bottom:84px;
 }
 
 .wide-card{
@@ -371,6 +391,7 @@ body{
   text-align:center;
 }
 
+/* Responsive */
 @media (max-width: 980px){
   .hero-inner{ grid-template-columns: 1fr; }
   .grid.four{ grid-template-columns: repeat(2, minmax(0,1fr)); }
@@ -381,5 +402,10 @@ body{
   .grid.two{ grid-template-columns: 1fr; }
   .grid.four{ grid-template-columns: 1fr; }
   .nav{ display:none; }
-  .hero{ padding-top:44px; }
+
+  /* keep hero spacing comfortable; main already has top padding for topbar */
+  .hero{ padding-top:64px; }
+
+  /* optional: slightly smaller offset on small screens */
+  :root{ --topbar-h: 56px; }
 }
