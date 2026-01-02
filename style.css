@@ -327,8 +327,7 @@ section{
 
 /* Wide section (Status/Contact) */
 .section-wide{
-  padding-top:54px;
-  padding-bottom:84px;
+  padding:44px 0; /* dokładnie jak zwykła .section */
 }
 
 .wide-card{
