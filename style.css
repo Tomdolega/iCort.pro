@@ -96,7 +96,7 @@ body{
 
 .hero-inner{
   display:grid;
-  grid-template-columns: 1.15fr .85fr;
+  grid-template-columns: 1fr;
   gap:24px;
   align-items:start;
 }
