@@ -71,7 +71,7 @@ section{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:8px 0; /* FIX: normal height */
+  padding:8px 0;
   gap:18px;
 }
 
@@ -119,8 +119,8 @@ section{
 
 .hero-inner{
   display:grid;
-  grid-template-columns: 1fr; /* your current layout (stacked) */
-  gap:72px;                  /* more space between hero blocks */
+  grid-template-columns: 1fr;
+  gap:72px;
   align-items:start;
 }
 
@@ -160,9 +160,9 @@ section{
 
 .cta{
   display:flex;
-  gap:14px;          /* more space between buttons */
+  gap:14px;
   flex-wrap:wrap;
-  margin:18px 0 16px; /* more space around buttons block */
+  margin:18px 0 16px;
 }
 
 .btn{
@@ -275,7 +275,7 @@ section{
 
 /* SECTIONS */
 .section{
-  padding:44px 0; /* more space between sections */
+  padding:44px 0;
 }
 
 .section h2{
@@ -289,6 +289,8 @@ section{
   gap:14px;
 }
 .grid.two{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+
+/* Core pillars: 2x2 grid */
 .grid.four{ grid-template-columns: repeat(2, minmax(0,1fr)); }
 
 .card{
@@ -353,6 +355,12 @@ section{
   grid-template-columns: repeat(3, minmax(0,1fr));
   gap:12px;
 }
+
+/* Contact row: 2 columns when you add class="wide-grid wide-grid-2" in HTML */
+.wide-grid-2{
+  grid-template-columns: repeat(2, minmax(0,1fr));
+}
+
 .wide-block{
   padding:14px 14px;
   border-radius:18px;
@@ -403,9 +411,7 @@ section{
   .grid.four{ grid-template-columns: 1fr; }
   .nav{ display:none; }
 
-  /* keep hero spacing comfortable; main already has top padding for topbar */
   .hero{ padding-top:64px; }
 
-  /* optional: slightly smaller offset on small screens */
   :root{ --topbar-h: 56px; }
 }
