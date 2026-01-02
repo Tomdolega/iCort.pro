@@ -1,55 +1,225 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>iCort Pro</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Physically calibrated spatial capture system. Patent pending." />
+  <title>iCort Pro</title>
+  <meta name="description" content="Physically calibrated spatial capture. Built on hardware truth, not estimation." />
   <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 </head>
 <body>
-  <main class="container">
-    <header class="hero">
-      <h1>iCort Pro</h1>
-      <p class="tagline">
-        Physically calibrated spatial capture.<br>
-        Built on hardware truth, not estimation.
-      </p>
-      <span class="badge">Patent pending</span>
-    </header>
+  <!-- Animated background -->
+  <canvas id="bg" aria-hidden="true"></canvas>
 
-    <section class="block">
-      <h2>What it is</h2>
-      <p>
-        iCort Pro is a fixed-geometry spatial capture system that encodes optical calibration
-        directly into hardware. It enables deterministic stereoscopic and multi-view capture
-        without software calibration routines.
-      </p>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <span class="brand-mark"></span>
+        <span class="brand-name">iCort Pro</span>
+      </div>
+
+      <nav class="nav">
+        <a href="#what">What it is</a>
+        <a href="#pillars">Core pillars</a>
+        <a href="#status">Status</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO (full width) -->
+    <section class="hero" id="top">
+      <div class="container hero-inner">
+        <div class="hero-left">
+          <h1>Physically calibrated spatial capture.<br/>Built on hardware truth, not estimation.</h1>
+
+          <div class="badges">
+            <span class="badge">Patent pending</span>
+            <span class="badge subtle">R&amp;D stage</span>
+          </div>
+
+          <p class="lead">
+            iCort Pro is a fixed-geometry spatial capture system designed to encode optical calibration into hardware,
+            enabling deterministic stereoscopic and multi-view capture without relying on software calibration routines.
+          </p>
+
+          <div class="cta">
+            <a class="btn" href="#what">Overview</a>
+            <a class="btn ghost" href="#status">Project status</a>
+            <a class="btn ghost" href="#contact">Contact</a>
+          </div>
+
+          <p class="fineprint">
+            Proprietary technology protected by pending U.S. patent applications.
+          </p>
+        </div>
+
+        <div class="hero-right">
+          <div class="glass-panel">
+            <div class="panel-title">System concept</div>
+            <div class="panel-body">
+              <div class="io-grid">
+                <div class="io">
+                  <div class="io-label">Input</div>
+                  <div class="io-value">Raw sensor streams<br/>from multiple devices</div>
+                </div>
+                <div class="io">
+                  <div class="io-label">Hardware layer</div>
+                  <div class="io-value">Physically enforced calibration state</div>
+                </div>
+                <div class="io">
+                  <div class="io-label">Output</div>
+                  <div class="io-value">Repeatable stereo / multi-view<br/>capture &amp; processing</div>
+                </div>
+              </div>
+
+              <div class="divider"></div>
+
+              <div class="mini">
+                <div class="mini-k">Focus</div>
+                <div class="mini-v">Determinism, repeatability, and calibration integrity.</div>
+              </div>
+              <div class="mini">
+                <div class="mini-k">Stage</div>
+                <div class="mini-v">Early prototyping and system validation.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hint">
+            No photos of internal hardware. Visuals stay abstract by design.
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section class="block">
-      <h2>Core pillars</h2>
-      <ul>
-        <li>Monolithic fixed-geometry capture hardware</li>
-        <li>Adapter-based sensor normalization</li>
-        <li>Physical enforcement of optical calibration state</li>
-        <li>Calibration-dependent capture and processing pipeline</li>
-      </ul>
+    <!-- CONTENT (same vibe as before) -->
+    <section class="section" id="what">
+      <div class="container">
+        <h2>What it is</h2>
+        <div class="grid two">
+          <div class="card">
+            <h3>Fixed geometry, predictable results</h3>
+            <p>
+              iCort Pro is designed to anchor capture in a known physical configuration, so sessions behave consistently
+              across time, devices, and operators.
+            </p>
+            <p class="muted">
+              We describe the capabilities, not the enabling mechanics.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Calibration as a precondition</h3>
+            <p>
+              The pipeline is designed to depend on verified physical calibration. When calibration compliance is absent,
+              the system can restrict or degrade operation by design.
+            </p>
+            <p class="muted">
+              Deterministic behavior is the goal: fewer “it depends” moments.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section class="block">
-      <h2>Status</h2>
-      <p>
-        Four provisional patent applications filed (US).<br>
-        Early-stage R&D and system validation.
-      </p>
+    <section class="section" id="pillars">
+      <div class="container">
+        <h2>Core pillars</h2>
+
+        <div class="grid four">
+          <div class="card">
+            <div class="kicker">P1</div>
+            <h3>Monolithic fixed-geometry hardware</h3>
+            <p>
+              A rigid capture platform designed to maintain a repeatable spatial relationship between capture nodes.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="kicker">P2</div>
+            <h3>Adapter-based sensor normalization</h3>
+            <p>
+              Device-specific interfaces intended to normalize heterogeneous capture devices into a common physical frame.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="kicker">P3</div>
+            <h3>Physical enforcement of optical state</h3>
+            <p>
+              Mechanisms intended to enforce or verify a known optical configuration prior to capture.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="kicker">P4</div>
+            <h3>Calibration-dependent pipeline</h3>
+            <p>
+              An end-to-end capture and processing pipeline intended to consume hardware-derived calibration without
+              performing software estimation.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <footer class="footer">
-      <p>© 2026 iCort Pro</p>
-      <p>Contact: hi@icort.pro</p>
-    </footer>
+    <!-- STATUS / FOCUS / CONTACT (full width at bottom) -->
+    <section class="section section-wide" id="status">
+      <div class="container">
+        <div class="wide-card">
+          <div class="wide-top">
+            <h2>Status</h2>
+            <span class="badge subtle">Updated as we go</span>
+          </div>
+
+          <div class="wide-grid">
+            <div class="wide-block">
+              <div class="wide-k">IP</div>
+              <div class="wide-v">Four provisional patent applications filed (US). Patent pending.</div>
+            </div>
+
+            <div class="wide-block">
+              <div class="wide-k">Stage</div>
+              <div class="wide-v">Early-stage R&amp;D, prototyping, and system validation.</div>
+            </div>
+
+            <div class="wide-block">
+              <div class="wide-k">Availability</div>
+              <div class="wide-v">Not a commercial offer. Collaboration and technical discussions only.</div>
+            </div>
+          </div>
+
+          <div class="wide-divider"></div>
+
+          <div class="wide-grid" id="contact">
+            <div class="wide-block">
+              <div class="wide-k">Contact</div>
+              <div class="wide-v">
+                <a href="mailto:hi@icort.pro">hi@icort.pro</a>
+              </div>
+            </div>
+
+            <div class="wide-block">
+              <div class="wide-k">Location</div>
+              <div class="wide-v">Poland / UK / USA</div>
+            </div>
+
+            <div class="wide-block">
+              <div class="wide-k">Notes</div>
+              <div class="wide-v">We keep technical disclosure non-enabling on purpose.</div>
+            </div>
+          </div>
+
+          <div class="footerline">
+            © 2026 iCort Pro
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <script src="app.js"></script>
 </body>
 </html>
