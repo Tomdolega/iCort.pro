@@ -3,6 +3,8 @@
 }
 
 body {
+ position:relative;
+  z-index:1;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
   background: #0e0f11;
