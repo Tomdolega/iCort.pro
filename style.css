@@ -394,7 +394,7 @@ section{
 .wide-divider{
   height:1px;
   background: rgba(255,255,255,.10);
-  margin:14px 0;
+  margin:24px 0 32px; /* góra | boki | dół */
 }
 
 .footerline{
