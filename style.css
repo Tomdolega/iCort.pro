@@ -13,7 +13,7 @@
   --max: 1120px;
 
   /* fixed topbar offset */
-  --topbar-h: 56px;
+  --topbar-h: 60x;
 }
 
 *{ box-sizing:border-box; }
@@ -71,7 +71,7 @@ section{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:14px 0; /* FIX: normal height */
+  padding:10px 0; /* FIX: normal height */
   gap:18px;
 }
 
