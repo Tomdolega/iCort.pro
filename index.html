@@ -1,224 +1,306 @@
+<!-- index.html -->
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>iCort Pro</title>
-  <meta name="description" content="Physically calibrated spatial capture. Built on hardware truth, not estimation." />
-  <link rel="stylesheet" href="style.css?v=7" />
-</head>
-<body>
-  <!-- Animated background -->
-  <canvas id="bg" aria-hidden="true"></canvas>
 
-  <header class="topbar">
-    <div class="container topbar-inner">
-      <div class="brand">
-        <span class="brand-mark"></span>
+  <title>iCort Pro | Fixed Geometry Spatial Capture</title>
+  <meta name="description" content="iCort Pro is an early-stage applied R&D initiative focused on fixed-geometry hardware for repeatable spatial capture and calibration-based imaging systems." />
+
+  <meta property="og:title" content="iCort Pro | Fixed Geometry Spatial Capture" />
+  <meta property="og:description" content="Hardware-enforced geometry for repeatable spatial capture and calibration-based imaging systems." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./style.css" />
+  <script defer src="./app.js"></script>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="iCort Pro home">
+        <span class="brand-mark">iC</span>
         <span class="brand-name">iCort Pro</span>
-      </div>
+      </a>
 
       <nav class="nav">
-        <a href="#what">What it is</a>
-        <a href="#pillars">Core pillars</a>
+        <a href="#what">What</a>
+        <a href="#why">Why</a>
         <a href="#status">Status</a>
-        <a href="#contact">Contact</a>
+        <a href="#team">Team</a>
+        <a href="#contact" class="nav-cta">Contact</a>
       </nav>
+
+      <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="mobile-nav" hidden>
+      <a href="#what">What</a>
+      <a href="#why">Why</a>
+      <a href="#status">Status</a>
+      <a href="#team">Team</a>
+      <a href="#contact">Contact</a>
     </div>
   </header>
 
-  <main>
-    <!-- HERO (full width) -->
-    <section class="hero" id="top">
+  <main id="top">
+    <section class="hero">
       <div class="container hero-inner">
-        <div class="hero-left">
-          <h1>Physically calibrated spatial capture.<br/>Built on hardware truth, not estimation.</h1>
+        <div class="hero-copy">
+          <p class="eyebrow">Applied R&D • Hardware-first • Early stage</p>
 
-          <div class="badges">
-            <span class="badge">Patent pending</span>
-            <span class="badge subtle">R&amp;D stage</span>
-          </div>
+          <h1>
+            Fixed geometry hardware for repeatable spatial capture
+          </h1>
 
           <p class="lead">
-            iCort Pro is a fixed-geometry spatial capture system designed to encode optical calibration into hardware,
-            enabling deterministic stereoscopic and multi-view capture without relying on software calibration routines.
+            iCort Pro is an early-stage applied R&D initiative focused on hardware-enforced geometry and
+            calibration-based imaging systems. The goal is to improve repeatability and metrical consistency
+            by reducing reliance on continuous runtime estimation.
           </p>
 
-          <div class="cta">
-            <a class="btn" href="#what">Overview</a>
-            <a class="btn ghost" href="#status">Project status</a>
-            <a class="btn ghost" href="#contact">Contact</a>
+          <div class="hero-badges">
+            <span class="badge">Proof of Concept (TRL 3–4)</span>
+            <span class="badge">Patent pending (US provisional)</span>
+            <span class="badge">Remote team (EU)</span>
+          </div>
+
+          <div class="hero-actions">
+            <a class="btn primary" href="#contact">Request a technical conversation</a>
+            <a class="btn" href="#status">See current status</a>
           </div>
 
           <p class="fineprint">
-            Proprietary technology protected by pending U.S. patent applications.
+            Not a commercial offer. We share capabilities, not enabling mechanics.
           </p>
         </div>
 
-        <div class="hero-right">
-          <div class="glass-panel">
-            <div class="panel-title">System concept</div>
-            <div class="panel-body">
-              <div class="io-grid">
-                <div class="io">
-                  <div class="io-label">Input</div>
-                  <div class="io-value">Raw sensor streams<br/>from multiple devices</div>
-                </div>
-                <div class="io">
-                  <div class="io-label">Hardware layer</div>
-                  <div class="io-value">Physically enforced calibration state</div>
-                </div>
-                <div class="io">
-                  <div class="io-label">Output</div>
-                  <div class="io-value">Repeatable stereo / multi-view<br/>capture &amp; processing</div>
-                </div>
-              </div>
+        <div class="hero-card" aria-label="Summary card">
+          <div class="card">
+            <h2>Focus</h2>
+            <ul>
+              <li>Fixed-baseline geometry (hardware enforced)</li>
+              <li>Calibration as a physical prerequisite</li>
+              <li>Repeatability under real-world conditions</li>
+              <li>Workflow validation and prototyping</li>
+            </ul>
+          </div>
 
-              <div class="divider"></div>
+          <div class="card">
+            <h2>Current outputs</h2>
+            <ul>
+              <li>Prototype rig iterations</li>
+              <li>Initial capture pipeline (PoC)</li>
+              <li>Test recordings and validation notes</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
-              <div class="mini">
-                <div class="mini-k">Focus</div>
-                <div class="mini-v">Determinism, repeatability, and calibration integrity.</div>
-              </div>
-              <div class="mini">
-                <div class="mini-k">Stage</div>
-                <div class="mini-v">Early prototyping and system validation.</div>
-              </div>
+    <section id="what" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>What it is</h2>
+          <p>
+            A hardware-anchored approach to spatial capture that treats geometry stability as the foundation.
+            The system is designed to make results more repeatable and easier to validate step by step.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <article class="feature">
+            <h3>Fixed Geometry</h3>
+            <p>
+              The relationship between sensors is enforced physically, aiming for stable extrinsics and consistent capture conditions.
+            </p>
+          </article>
+
+          <article class="feature">
+            <h3>Calibration First</h3>
+            <p>
+              Calibration is treated as a controlled prerequisite, not something re-estimated continuously during capture.
+            </p>
+          </article>
+
+          <article class="feature">
+            <h3>Validation Driven</h3>
+            <p>
+              The goal is measurable consistency: repeatable results, predictable behavior, and clear verification steps.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="why" class="section alt">
+      <div class="container">
+        <div class="section-head">
+          <h2>Why this approach</h2>
+          <p>
+            Many spatial pipelines rely on probabilistic estimation that can drift or vary across runs.
+            A hardware-enforced baseline aims to reduce variance and improve confidence in the resulting spatial media.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div class="panel">
+            <h3>Problem signals</h3>
+            <ul>
+              <li>Drift and low repeatability between sessions</li>
+              <li>Sensitivity to scene texture and operator behavior</li>
+              <li>Calibration complexity and human error risk</li>
+              <li>Hard-to-verify outcomes in real-world capture</li>
+            </ul>
+          </div>
+
+          <div class="panel">
+            <h3>Intended outcomes</h3>
+            <ul>
+              <li>More repeatable capture conditions</li>
+              <li>Improved metrical consistency where applicable</li>
+              <li>Clear, testable workflow steps</li>
+              <li>A practical base for further pipeline development</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="status" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Status</h2>
+          <p>
+            We are currently validating core assumptions and refining the capture-to-playback workflow.
+            The focus is on PoC stability, repeatability tests, and preparing for acceleration.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <div class="step">
+            <div class="step-dot" aria-hidden="true"></div>
+            <div class="step-body">
+              <h3>Now</h3>
+              <p>PoC rig iterations, pipeline PoC, initial validation recordings.</p>
             </div>
           </div>
 
-          
+          <div class="step">
+            <div class="step-dot" aria-hidden="true"></div>
+            <div class="step-body">
+              <h3>Next</h3>
+              <p>Expanded testing, repeatability benchmarks, refinement of calibration workflow.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-dot" aria-hidden="true"></div>
+            <div class="step-body">
+              <h3>Acceleration goal</h3>
+              <p>Technical validation with partners, stronger evidence base, and scope definition for v1.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout">
+          <strong>Collaboration mode:</strong>
+          We are open to technical conversations, validation pathways, and acceleration programs.
+          We do not share enabling mechanics publicly.
         </div>
       </div>
     </section>
 
-    <!-- CONTENT (same vibe as before) -->
-    <section class="section" id="what">
+    <section id="team" class="section alt">
       <div class="container">
-        <h2>What it is</h2>
-        <div class="grid two">
-          <div class="card">
-            <h3>Fixed geometry, predictable results</h3>
+        <div class="section-head">
+          <h2>Team</h2>
+          <p>
+            An interdisciplinary team combining applied imaging practice, hardware prototyping, and product execution.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div class="person">
+            <h3>Tomasz Dołęga</h3>
+            <p class="role">Co-founder • Business, operations, product direction</p>
             <p>
-              iCort Pro is designed to anchor capture in a known physical configuration, so sessions behave consistently
-              across time, devices, and operators.
+              Focused on project execution, validation planning, go-to-market preparation and partner outreach.
+              Background across imaging practice and long-term business leadership.
             </p>
-            <p class="muted">
-              We describe the capabilities, not the enabling mechanics.
+            <p class="links">
+              <a href="https://www.linkedin.com/in/tomdolega/" target="_blank" rel="noreferrer">LinkedIn</a>
             </p>
           </div>
 
-          <div class="card">
-            <h3>Calibration as a precondition</h3>
+          <div class="person">
+            <h3>Martin Jędrzejewski</h3>
+            <p class="role">Co-founder • Technical lead, R&D</p>
             <p>
-              The pipeline is designed to depend on verified physical calibration. When calibration compliance is absent,
-              the system can restrict or degrade operation by design.
+              Focused on system design, prototyping, capture workflow development and technical validation.
+              Hands-on development across the pipeline and hardware iterations.
             </p>
-            <p class="muted">
-              Deterministic behavior is the goal: fewer “it depends” moments.
+            <p class="links">
+              <span class="muted">LinkedIn link optional</span>
             </p>
           </div>
         </div>
+
+        <p class="fineprint">
+          We keep public descriptions high level to protect IP and maintain clean disclosure boundaries.
+        </p>
       </div>
     </section>
 
-    <section class="section" id="pillars">
+    <section id="contact" class="section">
       <div class="container">
-        <h2>Core pillars</h2>
+        <div class="section-head">
+          <h2>Contact</h2>
+          <p>
+            If you are an accelerator, R&D partner, or technical evaluator and want to discuss validation and next steps, reach out.
+          </p>
+        </div>
 
-        <div class="grid four">
+        <div class="contact-grid">
           <div class="card">
-            <div class="kicker">P1</div>
-            <h3>Monolithic fixed-geometry hardware</h3>
-            <p>
-              A rigid capture platform designed to maintain a repeatable spatial relationship between capture nodes.
-            </p>
+            <h3>Email</h3>
+            <p class="muted">Use email for first contact. We can share a controlled technical summary under NDA if needed.</p>
+            <a class="btn primary" href="mailto:contact@icort.pro">contact@icort.pro</a>
           </div>
 
           <div class="card">
-            <div class="kicker">P2</div>
-            <h3>Adapter-based sensor normalization</h3>
-            <p>
-              Device-specific interfaces intended to normalize heterogeneous capture devices into a common physical frame.
-            </p>
+            <h3>LinkedIn</h3>
+            <p class="muted">Company page and founder profiles.</p>
+            <a class="btn" href="https://www.linkedin.com/company/icort" target="_blank" rel="noreferrer">iCort on LinkedIn</a>
           </div>
 
           <div class="card">
-            <div class="kicker">P3</div>
-            <h3>Physical enforcement of optical state</h3>
-            <p>
-              Mechanisms intended to enforce or verify a known optical configuration prior to capture.
+            <h3>Disclosure</h3>
+            <p class="muted">
+              Public content describes capabilities and validation goals. Enabling mechanics remain confidential.
             </p>
-          </div>
-
-          <div class="card">
-            <div class="kicker">P4</div>
-            <h3>Calibration-dependent pipeline</h3>
-            <p>
-              An end-to-end capture and processing pipeline intended to consume hardware-derived calibration without
-              performing software estimation.
-            </p>
+            <button class="btn" id="copy-summary" type="button">Copy 2-line summary</button>
+            <p class="copied" id="copied" hidden>Copied.</p>
           </div>
         </div>
       </div>
     </section>
-
-    <!-- STATUS / FOCUS / CONTACT (full width at bottom) -->
-    <section class="section section-wide" id="status">
-  <div class="container">
-
-    <!-- CARD 1: STATUS -->
-    <div class="wide-card">
-      <div class="wide-top">
-        <h2>Status</h2>
-        <span class="badge subtle">Updated as we go</span>
-      </div>
-
-      <div class="wide-grid-vertical">
-        <div class="wide-block">
-          <div class="wide-k">IP</div>
-          <div class="wide-v">Four provisional patent applications filed (US). Patent pending.</div>
-        </div>
-        <div class="wide-block">
-          <div class="wide-k">Stage</div>
-          <div class="wide-v">Early-stage R&amp;D, prototyping, and system validation.</div>
-        </div>
-        <div class="wide-block">
-          <div class="wide-k">Availability</div>
-          <div class="wide-v">Not a commercial offer. Collaboration and technical discussions only.</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- SPACE between cards -->
-    <div class="wide-divider"></div>
-
-    <!-- CARD 2: CONTACT -->
-    <div class="wide-card" id="contact">
-      <div class="wide-top">
-        <h2>Contact</h2>
-        <span class="badge subtle">Reach out</span>
-      </div>
-
-      <div class="wide-grid wide-grid-2">
-        <div class="wide-block">
-          <div class="wide-k">Email</div>
-          <div class="wide-v"><a href="mailto:hi@icort.pro">hi@icort.pro</a></div>
-        </div>
-
-        <div class="wide-block">
-          <div class="wide-k">Location</div>
-          <div class="wide-v">EU / UK / USA</div>
-        </div>
-      </div>
-
-      <div class="footerline">© 2026 iCort Pro</div>
-    </div>
-
-  </div>
-</section>
   </main>
 
-  <script src="app.js"></script>
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> iCort Pro. All rights reserved.</p>
+      <p class="muted">
+        Early-stage applied R&D initiative. Not a commercial offer.
+      </p>
+    </div>
+  </footer>
 </body>
 </html>
