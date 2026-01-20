@@ -117,6 +117,7 @@ main {
   position: relative;
 }
 
+codex/validate-html-and-fix-bugs-38vyqp
 .section > * {
   position: relative;
   z-index: 1;
@@ -152,6 +153,24 @@ main {
 .section--alt::after {
   background: radial-gradient(circle at top, rgba(120, 190, 255, 0.08), transparent 60%);
   opacity: 0.6;
+
+.section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 40%);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.section--alt {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.01)
+  );
+}
+main
 }
 
 .section__head {
@@ -232,6 +251,7 @@ main {
   height: 120px;
   background: linear-gradient(180deg, rgba(11, 15, 20, 0) 0%, var(--bg) 100%);
   pointer-events: none;
+codex/validate-html-and-fix-bugs-38vyqp
 }
 
 .kicker {
@@ -247,6 +267,23 @@ main {
   gap: 8px;
 }
 
+
+}
+
+.kicker {
+  color: var(--muted);
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+main
 .chip {
   font-size: 13px;
   padding: 6px 12px;
@@ -509,6 +546,7 @@ main {
 
 .glow:hover::after {
   opacity: 0.55;
+codex/validate-html-and-fix-bugs-38vyqp
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -534,6 +572,33 @@ main {
   }
 }
 
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html,
+  body {
+    scroll-behavior: auto;
+  }
+
+  .glow::before {
+    animation: none;
+  }
+
+  .card,
+  .btn,
+  .reveal {
+    transition: none;
+  }
+
+  .card:hover,
+  .btn--ghost:hover,
+  .btn--primary:hover {
+    transform: none;
+  }
+}
+
+main
 @media (max-width: 720px) {
   .header__inner {
     padding: 12px 0;
