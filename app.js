@@ -18,6 +18,33 @@
     });
   }
 
+  const revealNodes = document.querySelectorAll("[data-reveal]");
+  const prefersReducedMotion =
+    window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (revealNodes.length) {
+    revealNodes.forEach((node) => node.classList.add("reveal"));
+
+    if (prefersReducedMotion) {
+      revealNodes.forEach((node) => node.classList.add("is-visible"));
+    } else {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+
+      revealNodes.forEach((node) => observer.observe(node));
+    }
+  }
+
   // --- Animated background: "space drift" particles + connections ---
   const canvas = document.getElementById("bg");
   if (!canvas) return;
@@ -26,10 +53,6 @@
   let w = 0,
     h = 0,
     dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
-
-  const prefersReducedMotion =
-    window.matchMedia &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   function resize() {
     w = Math.floor(window.innerWidth);
@@ -62,7 +85,7 @@
       vx: rand(-0.12, 0.12),
       vy: rand(-0.08, 0.08),
       r: rand(0.8, 1.8),
-      a: rand(0.10, 0.28),
+      a: rand(0.1, 0.28),
     });
   }
 
@@ -146,7 +169,7 @@
         const dy = a.y - b.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < maxDist) {
-          const alpha = (1 - dist / maxDist) * 0.10;
+          const alpha = (1 - dist / maxDist) * 0.1;
           ctx.strokeStyle = `rgba(255,255,255,${alpha})`;
           ctx.lineWidth = 1;
           ctx.beginPath();
