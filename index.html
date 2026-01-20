@@ -1,276 +1,429 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0b0f14" />
+:root{
+  --bg: #0b0f14;
+  --text: rgba(255,255,255,.92);
+  --muted: rgba(255,255,255,.68);
 
-  <title>iCort Pro</title>
-  <meta name="description" content="iCort Pro is an early-stage applied R&amp;D initiative focused on fixed-geometry hardware for repeatable spatial capture and calibration-based imaging systems." />
+  /* Liquid glass */
+  --glass: rgba(255,255,255,.07);
+  --glass-strong: rgba(255,255,255,.10);
+  --glass-border: rgba(255,255,255,.14);
+  --shadow: 0 22px 70px rgba(0,0,0,.50);
 
-  <!-- Canonical + Icons -->
-  <link rel="canonical" href="https://icort.pro/" />
-  <link rel="icon" href="./assets/favicon.ico" />
-  <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png" />
+  /* Section alt tint (keep translucent so bg shows through) */
+  --alt-tint: rgba(255,255,255,.02);
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="iCort Pro" />
-  <meta property="og:description" content="Fixed-geometry hardware for repeatable spatial capture and calibration-based imaging systems." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://icort.pro/" />
-  <meta property="og:image" content="https://icort.pro/assets/og.jpg" />
+  /* Metallic glow */
+  --glow-a: rgba(120,190,255,.55);
+  --glow-b: rgba(120,190,255,.18);
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="iCort Pro" />
-  <meta name="twitter:description" content="Fixed-geometry hardware for repeatable spatial capture and calibration-based imaging systems." />
-  <meta name="twitter:image" content="https://icort.pro/assets/og.jpg" />
+  --radius: 18px;
+  --radius2: 22px;
+}
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+*{ box-sizing:border-box; }
+html, body{ height:100%; }
+body{
+  margin:0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x:hidden;
+  padding-top: 72px;
+}
 
-codex/validate-html-and-fix-bugs-32ggas
-  <link rel="stylesheet" href="./style.css?v=2026.4" />
-  <script defer src="./app.js?v=2026.4"></script>
- main
-</head>
+a{ color:inherit; text-decoration:none; }
+p{ margin:0; }
+h1,h2,h3{ margin:0; letter-spacing:-0.02em; }
+ul{ margin:0; padding-left: 18px; }
 
-<body>
-  <!-- Animated background (subtle) -->
-  <canvas id="bg" aria-hidden="true"></canvas>
+.container{
+  width:min(1100px, calc(100% - 40px));
+  margin:0 auto;
+}
 
-  <header class="header">
-    <div class="container header__inner">
-      <a class="brand" href="#top" aria-label="Home">
-        <!-- Swap this file with your logo, keep same name/path -->
-        <img class="brand__logo" src="./assets/logo.svg" alt="iCort Pro logo" onerror="this.style.display='none'" />
-        <span class="brand__text">iCort Pro</span>
-      </a>
+#bg{
+  position: fixed;
+  inset: 0;
+  width:100%;
+  height:100%;
+  z-index: 0;
+  pointer-events:none;
+}
 
-      <nav class="nav">
-        <a class="nav__link" href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
+/* Subtle animated nebula */
+body::before{
+  content:"";
+  position: fixed;
+  inset:-20%;
+  z-index:0;
+  pointer-events:none;
+  background:
+    radial-gradient(600px 400px at 20% 20%, rgba(70,160,255,.14), transparent 55%),
+    radial-gradient(700px 500px at 80% 30%, rgba(170,90,255,.12), transparent 60%),
+    radial-gradient(700px 500px at 30% 80%, rgba(90,255,200,.10), transparent 60%);
+  filter: blur(12px);
+  transform: translate3d(0,0,0);
+  animation: drift 18s ease-in-out infinite alternate;
+}
 
-  <main id="top">
-    <section class="hero">
-      <div class="container hero__grid">
-        <div class="hero__copy" data-reveal>
-          <p class="kicker">Applied R&amp;D • Hardware-first • Early stage</p>
+@keyframes drift{
+  from{ transform: translate3d(-1.5%, -1%, 0) scale(1.02); }
+  to{ transform: translate3d(1.5%, 1%, 0) scale(1.04); }
+}
 
-          <h1 class="hero__title">
-            Fixed geometry hardware for repeatable spatial capture
-          </h1>
+/* Liquid glass */
+.glass{
+  background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.05));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius2);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px) saturate(1.25);
+  -webkit-backdrop-filter: blur(18px) saturate(1.25);
+}
 
-          <p class="hero__lead">
-            iCort Pro focuses on a hardware-enforced geometry baseline and calibration-based imaging workflows.
-            The goal is consistent behavior in real-world conditions by reducing reliance on continuous runtime estimation.
-          </p>
+/* Metallic subtle border highlight */
+.glow-border{
+  position: relative;
+}
+.glow-border::before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, transparent 10%, var(--glow-a) 35%, transparent 60%, var(--glow-b) 85%, transparent 100%);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: .75;
+  pointer-events:none;
+  filter: blur(.1px);
+}
+@media (prefers-reduced-motion: no-preference){
+  .glow-border::before{
+    animation: shimmer 4.6s ease-in-out infinite;
+  }
+  @keyframes shimmer{
+    0%{ opacity:.55; filter: blur(.2px); }
+    50%{ opacity:.95; filter: blur(.0px); }
+    100%{ opacity:.55; filter: blur(.2px); }
+  }
+}
 
-          <div class="chips">
-            <span class="chip">PoC (TRL 3–4)</span>
-codex/validate-html-and-fix-bugs-32ggas
-            <span class="chip chip--metal glow-border">US provisional filings</span>
- main
-            <span class="chip">EU-based development</span>
-          </div>
-        </div>
+/* Header */
+.header{
+  position: fixed;
+  top:0; left:0; right:0;
+  z-index: 9999;
+  background: rgba(11,15,20,.55);
+  backdrop-filter: blur(16px) saturate(1.3);
+  -webkit-backdrop-filter: blur(16px) saturate(1.3);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
 
-        <div class="hero__panel glass" data-reveal>
-          <div class="hero__panelTop">
-            <span class="dot dot--g"></span>
-            <span class="dot dot--y"></span>
-            <span class="dot dot--r"></span>
-            <span class="hero__panelLabel">System snapshot</span>
-          </div>
+.header__inner{
+  height: 72px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
 
-          <div class="hero__panelBody">
-            <div class="metric">
-              <div class="metric__k">Core idea</div>
-              <div class="metric__v">Hardware-enforced baseline</div>
-            </div>
-            <div class="metric">
-              <div class="metric__k">Focus</div>
-              <div class="metric__v">Repeatability &amp; validation</div>
-            </div>
-            <div class="metric">
-              <div class="metric__k">Output</div>
-              <div class="metric__v">Practical capture workflows</div>
-            </div>
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:600;
+  letter-spacing:-0.01em;
+}
+.brand__logo{
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
+.brand__text{ opacity:.95; }
 
-            <div class="divider"></div>
+.nav__link{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.12);
+  backdrop-filter: blur(12px);
+}
 
-            <p class="small">
-              Public descriptions stay high-level. Detailed architecture and validation evidence are shared selectively.
-            </p>
-          </div>
-        </div>
-      </div>
+/* Hero */
+.hero{
+  position: relative;
+  z-index: 1;
+  padding: 52px 0 28px;
+}
 
-      <div class="sectionFade"></div>
-    </section>
+.hero__grid{
+  display:grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 26px;
+  align-items: stretch;
+}
 
-    <section id="summary" class="section" data-reveal>
-      <div class="container">
-        <div class="section__head">
-          <h2>What we’re building</h2>
-          <p>
-            A compact, fixed-geometry capture system designed to behave consistently across sessions and environments,
-            enabling reliable downstream spatial viewing and evaluation.
-          </p>
-        </div>
+.kicker{
+  display:inline-block;
+  font-size: 12px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
 
-        <div class="grid3">
-          <article class="card glass">
-            <h3>Fixed geometry baseline</h3>
-            <p>
-              A controlled physical baseline reduces variability and improves repeatability.
-            </p>
-          </article>
+.hero__title{
+  font-size: clamp(34px, 4.2vw, 52px);
+  line-height: 1.05;
+  margin-bottom: 14px;
+}
 
-          <article class="card glass">
-            <h3>Calibration as prerequisite</h3>
-            <p>
-              Calibration is treated as a controlled condition rather than an operator-dependent step.
-            </p>
-          </article>
+.hero__lead{
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.65;
+  max-width: 62ch;
+}
 
-          <article class="card glass">
-            <h3>Validation-driven iteration</h3>
-            <p>
-              Build, test, measure, refine. Progress is guided by validation, not assumptions.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
+.chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top: 18px;
+}
 
-    <section class="section section--alt" data-reveal>
-      <div class="container">
-        <div class="section__head">
-          <h2>Current stage</h2>
-          <p>
-            We’re completing a working PoC pipeline and preparing an acceleration path focused on engineering validation.
-          </p>
-        </div>
+.chip{
+  font-size: 12px;
+  color: rgba(255,255,255,.82);
+  padding: 8px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.10);
+}
+.chip--metal{
+  background: rgba(255,255,255,.07);
+  border-color: rgba(255,255,255,.12);
+}
 
-        <!-- FIXED: all steps are inside the timeline -->
-        <div class="timeline glass">
-          <div class="step">
-            <div class="step__num">01</div>
-            <div class="step__body">
-              <div class="step__title">Prototype rig iterations</div>
-              <div class="step__desc">Refine physical baseline, stability, repeatability.</div>
-            </div>
-          </div>
+.hero__panel{ padding: 14px; }
+.hero__panelTop{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding: 8px 10px 12px;
+}
 
-          <div class="step">
-            <div class="step__num">02</div>
-            <div class="step__body">
-              <div class="step__title">PoC capture + playback loop</div>
-              <div class="step__desc">Demonstrate end-to-end workflow using captured material.</div>
-            </div>
-          </div>
+.dot{ width:10px; height:10px; border-radius:50%; opacity:.85; }
+.dot--g{ background:#52d273; }
+.dot--y{ background:#f6c94f; }
+.dot--r{ background:#ff5f57; }
 
-          <div class="step">
-            <div class="step__num">03</div>
-            <div class="step__body">
-              <div class="step__title">Pilot validation readiness</div>
-              <div class="step__desc">Define test criteria, collect proof, prepare partner-facing demo.</div>
-            </div>
-          </div>
+.hero__panelLabel{
+  margin-left: 6px;
+  font-size: 12px;
+  color: rgba(255,255,255,.72);
+}
 
-          <div class="step">
-            <div class="step__num">04</div>
-            <div class="step__body">
-              <div class="step__title">IP protection in progress</div>
-              <div class="step__desc">Core concepts secured via US provisional patent filings. Further filings planned alongside validation.</div>
-            </div>
-          </div>
-        </div>
+.hero__panelBody{ padding: 10px; }
 
-        <div class="note glass">
-          <strong>Note:</strong> The public site is intentionally concise. We can share a short private deck and demo clips when relevant.
-        </div>
-      </div>
-    </section>
+.metric{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap: 14px;
+  padding: 10px 0;
+}
+.metric__k{ color: rgba(255,255,255,.70); font-size: 12px; letter-spacing: .02em; }
+.metric__v{ font-size: 13px; color: rgba(255,255,255,.90); text-align:right; }
 
-    <section class="section" data-reveal>
-      <div class="container">
-        <div class="section__head">
-          <h2>Team</h2>
-          <p>
-            Two-person core with clear split between product/operations and technical R&amp;D. Select specialists engaged as needed.
-          </p>
-        </div>
+.divider{ height: 1px; background: rgba(255,255,255,.12); margin: 10px 0 12px; }
 
-        <div class="grid2">
-codex/validate-html-and-fix-bugs-32ggas
+.small{ font-size: 12px; line-height: 1.6; }
+.muted{ color: var(--muted); }
 
-codex/validate-html-and-fix-bugs-osdr9i
-    
-          <article class="card glass glow team-card">
-main
-main
-            <h3>Tom Dolega</h3>
-            <p class="muted">Product, operations, go-to-market, partnerships.</p>
-            <ul class="list">
-              <li>Applied R&amp;D coordination and delivery planning</li>
-              <li>Validation strategy, documentation, partner readiness</li>
-              <li>Execution, operations, and stakeholder communication</li>
-            </ul>
-          </article>
+/* Smooth fade from hero into next section */
+.sectionFade{
+  position:absolute;
+  left:0; right:0; bottom:-1px;
+  height: 110px;
+  background: linear-gradient(to bottom, rgba(11,15,20,0), rgba(11,15,20,1));
+  pointer-events:none;
+}
 
-codex/validate-html-and-fix-bugs-32ggas
+/* Sections (smaller gaps) */
+.section{
+  position: relative;
+  z-index: 1;
+  padding: 42px 0;
+}
 
-codex/validate-html-and-fix-bugs-osdr9i
-          <article class="card glass glow-border team-card">
- main
-main
-            <h3>Martin Jedrzejewski</h3>
-            <p class="muted">Technology, system development, prototyping.</p>
-            <ul class="list">
-              <li>Rig design, technical architecture, iteration loop</li>
-              <li>Engineering validation and capture workflow development</li>
-              <li>Hands-on prototyping and technical testing</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
+/* Alt sections: translucent tint + internal gradient, no “solid slab” */
+.section--alt{
+  background: linear-gradient(180deg, rgba(255,255,255,.018), rgba(255,255,255,.010));
+  border-top: 1px solid rgba(255,255,255,.06);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
 
-    <section id="contact" class="section section--alt" data-reveal>
-      <div class="container">
-        <div class="contact glass">
-          <h2>Contact</h2>
-          <p>
-            If you’re exploring applied R&amp;D collaboration, validation environments, or acceleration support,
-            reach out directly:
-          </p>
+/* Soft transitions between sections (prevents “hard cut”) */
+.section::before,
+.section::after{
+  content:"";
+  position:absolute;
+  left:0; right:0;
+  height: 42px;
+  pointer-events:none;
+  z-index: 0;
+}
+.section::before{
+  top:-42px;
+  background: linear-gradient(to bottom, rgba(11,15,20,0), rgba(11,15,20,.0));
+}
+.section--alt::before{
+  background: linear-gradient(to bottom, rgba(11,15,20,0), rgba(255,255,255,.012));
+}
+.section--alt::after{
+  bottom:-42px;
+  background: linear-gradient(to bottom, rgba(255,255,255,.012), rgba(11,15,20,0));
+}
 
-          <div class="contact__row">
-            <a class="btn btn--primary" href="mailto:hi@icort.pro">hi@icort.pro</a>
-            <button class="btn btn--ghost" id="copyEmail" type="button" aria-label="Copy email">
-              Copy email
-            </button>
-          </div>
+.section__head{
+  max-width: 72ch;
+  margin-bottom: 18px;
+}
+.section__head h2{ font-size: 22px; margin-bottom: 10px; }
+.section__head p{ color: var(--muted); line-height: 1.65; }
 
-          <p class="small muted">
-            We reply quickly. If needed, we can share a short deck and demo evidence privately.
-          </p>
-        </div>
-      </div>
-    </section>
+.grid3{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.grid2{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
 
-    <footer class="footer" data-reveal>
-      <div class="container footer__inner">
-        <span>© <span id="year"></span> iCort Pro</span>
-        <span class="footer__sep">•</span>
-        <a href="mailto:hi@icort.pro">hi@icort.pro</a>
-      </div>
-    </footer>
-  </main>
-</body>
-</html>
+.card{ padding: 18px 18px 16px; }
+.card h3{ font-size: 15px; margin-bottom: 8px; }
+.card p{ color: var(--muted); line-height: 1.6; font-size: 13px; }
+
+.team-card{ min-height: 0; }
+
+.list{
+  margin-top: 10px;
+  color: rgba(255,255,255,.82);
+  line-height: 1.7;
+  font-size: 13px;
+}
+
+/* Timeline */
+.timeline{ padding: 14px; }
+
+.step{
+  display:flex;
+  gap: 14px;
+  padding: 12px 10px;
+  border-radius: 16px;
+}
+.step + .step{ border-top: 1px solid rgba(255,255,255,.10); }
+
+.step__num{
+  width: 34px; height: 34px;
+  border-radius: 12px;
+  display:flex; align-items:center; justify-content:center;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.12);
+  font-weight:600;
+  font-size: 12px;
+}
+
+.step__title{ font-weight:600; font-size: 13px; margin-bottom: 4px; }
+.step__desc{ color: var(--muted); font-size: 13px; line-height: 1.55; }
+
+.note{ padding: 16px; margin-top: 14px; color: rgba(255,255,255,.86); }
+
+/* Buttons */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.06);
+  color: rgba(255,255,255,.90);
+  cursor:pointer;
+  transition: transform .15s ease, background .15s ease, border-color .15s ease;
+}
+.btn:hover{
+  transform: translateY(-1px);
+  background: rgba(255,255,255,.09);
+  border-color: rgba(255,255,255,.18);
+}
+.btn--primary{
+  background: rgba(255,255,255,.13);
+  border-color: rgba(255,255,255,.20);
+}
+.btn--ghost{ background: rgba(255,255,255,.06); }
+
+/* Contact */
+.contact{ padding: 20px; }
+.contact p{ color: var(--muted); line-height: 1.65; margin-top: 10px; }
+.contact__row{
+  display:flex;
+  gap: 10px;
+  flex-wrap:wrap;
+  margin-top: 14px;
+}
+
+/* Footer */
+.footer{
+  position: relative;
+  z-index: 1;
+  padding: 22px 0 30px;
+}
+.footer__inner{
+  display:flex;
+  gap: 10px;
+  align-items:center;
+  justify-content:center;
+  color: rgba(255,255,255,.72);
+  font-size: 13px;
+}
+.footer__sep{ opacity: .55; }
+
+/* Reveal (optional) */
+.reveal{
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .5s ease, transform .5s ease;
+}
+.reveal.is-visible{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 900px){
+  body{ padding-top: 68px; }
+  .header__inner{ height: 68px; }
+  .hero__grid{ grid-template-columns: 1fr; }
+  .grid3{ grid-template-columns: 1fr; }
+  .grid2{ grid-template-columns: 1fr; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  body::before{ animation: none; }
+  .btn, .reveal{ transition: none; }
+  .glow-border::before{ animation: none; }
+}
