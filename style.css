@@ -79,6 +79,7 @@ a {
   align-items: center;
   justify-content: space-between;
   padding: 16px 0;
+codex/validate-html-and-fix-bugs-osdr9i
 }
 
 .brand {
@@ -398,6 +399,7 @@ main {
   display: inline-block;
 }
 
+ main
 .dot--g {
   background: #2dd4bf;
 }
@@ -434,12 +436,16 @@ main {
 }
 
 /* --- Shimmer / metallic border utility (subtle) --- */
+codex/validate-html-and-fix-bugs-osdr9i
 .glow-border {
+ main
   position: relative;
   isolation: isolate; /* keeps glow above background but below content */
 }
 
+codex/validate-html-and-fix-bugs-osdr9i
 .glow-border::before {
+main
   content: "";
   position: absolute;
   inset: -1px; /* slightly outside for crisp edge */
@@ -455,7 +461,10 @@ main {
   );
   background-size: 200% 200%;
   filter: blur(0.15px);
-  opacity: 0.5; /* keep it subtle */
+codex/validate-html-and-fix-bugs-osdr9i
+  
+  opacity: 0.55; /* keep it subtle */
+main
   animation: glowShift 6s ease-in-out infinite;
 
   /* This creates a "border only" effect */
@@ -469,19 +478,25 @@ main {
 }
 
 /* soft outer bloom (very subtle) */
+codex/validate-html-and-fix-bugs-osdr9i
 .glow-border::after {
+main
   content: "";
   position: absolute;
   inset: -10px;
   border-radius: inherit;
   background: radial-gradient(
       circle at 30% 30%,
+codex/validate-html-and-fix-bugs-osdr9i
       rgba(120, 190, 255, 0.12),
+main
       transparent 55%
     ),
     radial-gradient(
       circle at 70% 60%,
+codex/validate-html-and-fix-bugs-osdr9i
       rgba(180, 120, 255, 0.08),
+main
       transparent 60%
     );
   filter: blur(14px);
@@ -503,12 +518,15 @@ main {
 }
 
 /* Make it react on hover (premium) */
-.glow-border:hover::before {
-  opacity: 0.7;
+codex/validate-html-and-fix-bugs-osdr9i
+
+.glow:hover::before {
+  opacity: 0.75;
 }
 
-.glow-border:hover::after {
+.glow:hover::after {
   opacity: 0.55;
+codex/validate-html-and-fix-bugs-38vyqp
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -517,7 +535,7 @@ main {
     scroll-behavior: auto;
   }
 
-  .glow-border::before {
+  .glow::before {
     animation: none;
   }
 
@@ -534,6 +552,34 @@ main {
   }
 }
 
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html,
+  body {
+    scroll-behavior: auto;
+  }
+
+  .glow::before {
+    animation: none;
+  }
+
+  .card,
+  .btn,
+  .reveal {
+    transition: none;
+  }
+
+  .card:hover,
+  .btn--ghost:hover,
+  .btn--primary:hover {
+    transform: none;
+  }
+}
+
+main
+ main
 @media (max-width: 720px) {
   .header__inner {
     padding: 12px 0;
@@ -543,11 +589,37 @@ main {
     padding-top: 84px;
   }
 
-  .section {
-    padding: 52px 0;
-  }
-
+codex/validate-html-and-fix-bugs-osdr9i
+ 
   .hero {
     padding-top: 72px;
   }
+}
+
+.section,
+.section--alt{
+  position: relative;
+}
+
+.section::before,
+.section--alt::before{
+  content:"";
+  position:absolute;
+  left:0; right:0;
+  top:-48px;
+  height:48px;
+  pointer-events:none;
+  background: linear-gradient(to bottom, rgba(11,15,20,0), rgba(11,15,20,.35));
+}
+
+.section::after,
+.section--alt::after{
+  content:"";
+  position:absolute;
+  left:0; right:0;
+  bottom:-48px;
+  height:48px;
+  pointer-events:none;
+  background: linear-gradient(to bottom, rgba(11,15,20,.35), rgba(11,15,20,0));
+main
 }
