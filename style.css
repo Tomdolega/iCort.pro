@@ -47,6 +47,8 @@ img {
 a {
   color: inherit;
   text-decoration: none;
+codex/validate-html-and-fix-bugs-32ggas
+
 }
 
 #bg {
@@ -79,6 +81,7 @@ a {
   align-items: center;
   justify-content: space-between;
   padding: 16px 0;
+codex/validate-html-and-fix-bugs-osdr9i
 }
 
 .brand {
@@ -113,7 +116,7 @@ main {
 }
 
 .section {
-  padding: 56px 0;
+  padding: 64px 0;
   position: relative;
 }
 
@@ -145,23 +148,21 @@ main {
 }
 
 .section--alt::before {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0));
-  opacity: 0.6;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0));
+  opacity: 0.55;
 }
 
 .section--alt::after {
-  background: linear-gradient(
-      180deg,
-      rgba(120, 190, 255, 0.08),
-      rgba(11, 15, 20, 0) 60%
-    ),
-    radial-gradient(circle at 20% 20%, rgba(120, 190, 255, 0.1), transparent 55%);
-  opacity: 0.55;
+  background: radial-gradient(circle at top, rgba(120, 190, 255, 0.08), transparent 60%);
+  opacity: 0.6;
+main
 }
 
 .section__head {
   max-width: 700px;
+codex/validate-html-and-fix-bugs-32ggas
   margin-bottom: 20px;
+main
 }
 
 .section__head h2 {
@@ -176,7 +177,10 @@ main {
 
 .hero {
   position: relative;
-  padding: 88px 0 64px;
+codex/validate-html-and-fix-bugs-32ggas
+
+  padding: 96px 0 72px;
+main
 }
 
 .hero__grid {
@@ -188,7 +192,10 @@ main {
 
 .hero__title {
   margin: 16px 0;
-  font-size: clamp(36px, 5.6vw, 58px);
+codex/validate-html-and-fix-bugs-32ggas
+
+  font-size: clamp(34px, 5vw, 52px);
+ main
   line-height: 1.1;
 }
 
@@ -234,14 +241,11 @@ main {
 .sectionFade {
   position: absolute;
   inset: auto 0 0;
-  height: 160px;
-  background: linear-gradient(
-    180deg,
-    rgba(11, 15, 20, 0) 0%,
-    rgba(11, 15, 20, 0.45) 45%,
-    rgba(11, 15, 20, 0.7) 70%,
-    var(--bg) 100%
-  );
+codex/validate-html-and-fix-bugs-32ggas
+
+  height: 140px;
+  background: linear-gradient(180deg, rgba(11, 15, 20, 0) 0%, rgba(11, 15, 20, 0.65) 55%, var(--bg) 100%);
+main
   pointer-events: none;
 }
 
@@ -409,6 +413,9 @@ main {
   display: inline-block;
 }
 
+codex/validate-html-and-fix-bugs-32ggas
+
+ main
 .dot--g {
   background: #2dd4bf;
 }
@@ -422,16 +429,14 @@ main {
 }
 
 .glass {
-  background: linear-gradient(
-      160deg,
-      rgba(255, 255, 255, 0.16),
-      rgba(255, 255, 255, 0.04)
-    ),
-    radial-gradient(circle at top, rgba(255, 255, 255, 0.18), transparent 60%);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 22px;
-  box-shadow: 0 22px 60px rgba(5, 10, 18, 0.55);
-  backdrop-filter: blur(26px) saturate(1.25);
+codex/validate-html-and-fix-bugs-32ggas
+
+  background: linear-gradient(140deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04));
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(20px);
+ main
 }
 
 .team-card {
@@ -450,12 +455,17 @@ main {
 }
 
 /* --- Shimmer / metallic border utility (subtle) --- */
+codex/validate-html-and-fix-bugs-32ggas
 .glow-border {
+ main
   position: relative;
   isolation: isolate; /* keeps glow above background but below content */
 }
 
+codex/validate-html-and-fix-bugs-32ggas
 .glow-border::before {
+
+ main
   content: "";
   position: absolute;
   inset: -1px; /* slightly outside for crisp edge */
@@ -471,7 +481,13 @@ main {
   );
   background-size: 200% 200%;
   filter: blur(0.15px);
-  opacity: 0.5; /* keep it subtle */
+codex/validate-html-and-fix-bugs-32ggas
+
+codex/validate-html-and-fix-bugs-osdr9i
+  
+  opacity: 0.55; /* keep it subtle */
+main
+main
   animation: glowShift 6s ease-in-out infinite;
 
   /* This creates a "border only" effect */
@@ -485,19 +501,25 @@ main {
 }
 
 /* soft outer bloom (very subtle) */
+codex/validate-html-and-fix-bugs-32ggas
 .glow-border::after {
+ main
   content: "";
   position: absolute;
   inset: -10px;
   border-radius: inherit;
   background: radial-gradient(
       circle at 30% 30%,
+ codex/validate-html-and-fix-bugs-32ggas
       rgba(120, 190, 255, 0.12),
+ main
       transparent 55%
     ),
     radial-gradient(
       circle at 70% 60%,
+codex/validate-html-and-fix-bugs-32ggas
       rgba(180, 120, 255, 0.08),
+main
       transparent 60%
     );
   filter: blur(14px);
@@ -519,21 +541,30 @@ main {
 }
 
 /* Make it react on hover (premium) */
-.glow-border:hover::before {
-  opacity: 0.7;
+codex/validate-html-and-fix-bugs-32ggas
+
+codex/validate-html-and-fix-bugs-osdr9i
+
+.glow:hover::before {
+  opacity: 0.75;
 }
 
-.glow-border:hover::after {
+.glow:hover::after {
   opacity: 0.55;
+codex/validate-html-and-fix-bugs-38vyqp
 }
 
+main
 @media (prefers-reduced-motion: reduce) {
   html,
   body {
     scroll-behavior: auto;
   }
 
-  .glow-border::before {
+codex/validate-html-and-fix-bugs-32ggas
+
+  .glow::before {
+main
     animation: none;
   }
 
@@ -550,6 +581,37 @@ main {
   }
 }
 
+codex/validate-html-and-fix-bugs-32ggas
+
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html,
+  body {
+    scroll-behavior: auto;
+  }
+
+  .glow::before {
+    animation: none;
+  }
+
+  .card,
+  .btn,
+  .reveal {
+    transition: none;
+  }
+
+  .card:hover,
+  .btn--ghost:hover,
+  .btn--primary:hover {
+    transform: none;
+  }
+}
+
+main
+ main
+main
 @media (max-width: 720px) {
   .header__inner {
     padding: 12px 0;
@@ -559,11 +621,40 @@ main {
     padding-top: 84px;
   }
 
-  .section {
-    padding: 46px 0;
-  }
+codex/validate-html-and-fix-bugs-32ggas
 
+codex/validate-html-and-fix-bugs-osdr9i
+ 
   .hero {
-    padding-top: 68px;
+    padding-top: 72px;
   }
+}
+
+.section,
+.section--alt{
+  position: relative;
+}
+
+.section::before,
+.section--alt::before{
+  content:"";
+  position:absolute;
+  left:0; right:0;
+  top:-48px;
+  height:48px;
+  pointer-events:none;
+  background: linear-gradient(to bottom, rgba(11,15,20,0), rgba(11,15,20,.35));
+}
+
+.section::after,
+.section--alt::after{
+  content:"";
+  position:absolute;
+  left:0; right:0;
+  bottom:-48px;
+  height:48px;
+  pointer-events:none;
+  background: linear-gradient(to bottom, rgba(11,15,20,.35), rgba(11,15,20,0));
+main
+main
 }
