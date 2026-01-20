@@ -564,3 +564,43 @@ body::before{
   .glass-sweep::before{ animation: none; }
   .nav__link::after, .chip::after, .btn::after{ animation: none; opacity: 0; }
 }
+/* Strong metallic glass highlight – for key elements only */
+.glow-strong{
+  position: relative;
+}
+
+.glow-strong::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border-radius: inherit;
+  padding: 2px;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(140,210,255,.95),
+      rgba(140,210,255,.35),
+      rgba(120,160,255,.15),
+      rgba(140,210,255,.45)
+    );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events:none;
+  filter: blur(0.4px);
+}
+
+/* subtle pulse, glass-like */
+@media (prefers-reduced-motion: no-preference){
+  .glow-strong::before{
+    animation: glowPulse 3.6s ease-in-out infinite;
+  }
+}
+
+@keyframes glowPulse{
+  0%   { opacity:.55; }
+  50%  { opacity:1; }
+  100% { opacity:.55; }
+}
