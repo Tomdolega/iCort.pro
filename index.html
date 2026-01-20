@@ -1,15 +1,15 @@
-<!-- index.html -->
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b0f14" />
 
-  <title>iCort Pro | Fixed Geometry Spatial Capture</title>
+  <title>iCort Pro</title>
   <meta name="description" content="iCort Pro is an early-stage applied R&D initiative focused on fixed-geometry hardware for repeatable spatial capture and calibration-based imaging systems." />
 
-  <meta property="og:title" content="iCort Pro | Fixed Geometry Spatial Capture" />
-  <meta property="og:description" content="Hardware-enforced geometry for repeatable spatial capture and calibration-based imaging systems." />
+  <meta property="og:title" content="iCort Pro" />
+  <meta property="og:description" content="Fixed-geometry hardware for repeatable spatial capture and calibration-based imaging systems." />
   <meta property="og:type" content="website" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,286 +21,223 @@
 </head>
 
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="#top" aria-label="iCort Pro home">
-        <span class="brand-mark">iC</span>
-        <span class="brand-name">iCort Pro</span>
+  <!-- Animated background (subtle) -->
+  <canvas id="bg" aria-hidden="true"></canvas>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a class="brand" href="#top" aria-label="Home">
+        <!-- Swap this file with your logo, keep same name/path -->
+        <img class="brand__logo" src="./assets/logo.svg" alt="iCort Pro logo" onerror="this.style.display='none'" />
+        <span class="brand__text">iCort Pro</span>
       </a>
 
       <nav class="nav">
-        <a href="#what">What</a>
-        <a href="#why">Why</a>
-        <a href="#status">Status</a>
-        <a href="#team">Team</a>
-        <a href="#contact" class="nav-cta">Contact</a>
+        <a class="nav__link" href="#contact">Contact</a>
       </nav>
-
-      <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-
-    <div class="mobile-nav" hidden>
-      <a href="#what">What</a>
-      <a href="#why">Why</a>
-      <a href="#status">Status</a>
-      <a href="#team">Team</a>
-      <a href="#contact">Contact</a>
     </div>
   </header>
 
   <main id="top">
     <section class="hero">
-      <div class="container hero-inner">
-        <div class="hero-copy">
-          <p class="eyebrow">Applied R&D • Hardware-first • Early stage</p>
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <p class="kicker">Applied R&D • Hardware-first • Early stage</p>
 
-          <h1>
+          <h1 class="hero__title">
             Fixed geometry hardware for repeatable spatial capture
           </h1>
 
-          <p class="lead">
-            iCort Pro is an early-stage applied R&D initiative focused on hardware-enforced geometry and
-            calibration-based imaging systems. The goal is to improve repeatability and metrical consistency
-            by reducing reliance on continuous runtime estimation.
+          <p class="hero__lead">
+            iCort Pro focuses on a hardware-enforced geometry baseline and calibration-based imaging workflows.
+            The goal is consistent behavior in real-world conditions by reducing reliance on continuous runtime estimation.
           </p>
 
-          <div class="hero-badges">
-            <span class="badge">Proof of Concept (TRL 3–4)</span>
-            <span class="badge">Patent pending (US provisional)</span>
-            <span class="badge">Remote team (EU)</span>
+          <div class="chips">
+            <span class="chip">PoC (TRL 3–4)</span>
+            <span class="chip">US provisional filings</span>
+            <span class="chip">EU-based development</span>
           </div>
 
-          <div class="hero-actions">
-            <a class="btn primary" href="#contact">Request a technical conversation</a>
-            <a class="btn" href="#status">See current status</a>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#contact">Reach out</a>
+            <a class="btn btn--ghost" href="#summary">Overview</a>
+          </div>
+        </div>
+
+        <div class="hero__panel glass">
+          <div class="hero__panelTop">
+            <span class="dot dot--g"></span>
+            <span class="dot dot--y"></span>
+            <span class="dot dot--r"></span>
+            <span class="hero__panelLabel">System snapshot</span>
           </div>
 
-          <p class="fineprint">
-            Not a commercial offer. We share capabilities, not enabling mechanics.
+          <div class="hero__panelBody">
+            <div class="metric">
+              <div class="metric__k">Core idea</div>
+              <div class="metric__v">Hardware-enforced baseline</div>
+            </div>
+            <div class="metric">
+              <div class="metric__k">Focus</div>
+              <div class="metric__v">Repeatability & validation</div>
+            </div>
+            <div class="metric">
+              <div class="metric__k">Output</div>
+              <div class="metric__v">Practical capture workflows</div>
+            </div>
+
+            <div class="divider"></div>
+
+            <p class="small">
+              Public descriptions stay high-level. Detailed architecture and validation evidence are shared selectively.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="sectionFade"></div>
+    </section>
+
+    <section id="summary" class="section">
+      <div class="container">
+        <div class="section__head">
+          <h2>What we’re building</h2>
+          <p>
+            A compact, fixed-geometry capture system designed to behave consistently across sessions and environments,
+            enabling reliable downstream spatial viewing and evaluation.
           </p>
         </div>
 
-        <div class="hero-card" aria-label="Summary card">
-          <div class="card">
-            <h2>Focus</h2>
-            <ul>
-              <li>Fixed-baseline geometry (hardware enforced)</li>
-              <li>Calibration as a physical prerequisite</li>
-              <li>Repeatability under real-world conditions</li>
-              <li>Workflow validation and prototyping</li>
-            </ul>
-          </div>
+        <div class="grid3">
+          <article class="card glass">
+            <h3>Fixed geometry baseline</h3>
+            <p>
+              A controlled physical baseline reduces variability and improves repeatability.
+            </p>
+          </article>
 
-          <div class="card">
-            <h2>Current outputs</h2>
-            <ul>
-              <li>Prototype rig iterations</li>
-              <li>Initial capture pipeline (PoC)</li>
-              <li>Test recordings and validation notes</li>
-            </ul>
-          </div>
+          <article class="card glass">
+            <h3>Calibration as prerequisite</h3>
+            <p>
+              Calibration is treated as a controlled condition rather than an operator-dependent step.
+            </p>
+          </article>
+
+          <article class="card glass">
+            <h3>Validation-driven iteration</h3>
+            <p>
+              Build, test, measure, refine. Progress is guided by validation, not assumptions.
+            </p>
+          </article>
         </div>
       </div>
     </section>
 
-    <section id="what" class="section">
+    <section class="section section--alt">
       <div class="container">
-        <div class="section-head">
-          <h2>What it is</h2>
+        <div class="section__head">
+          <h2>Current stage</h2>
           <p>
-            A hardware-anchored approach to spatial capture that treats geometry stability as the foundation.
-            The system is designed to make results more repeatable and easier to validate step by step.
+            We’re completing a working PoC pipeline and preparing an acceleration path focused on engineering validation.
           </p>
         </div>
 
-        <div class="grid-3">
-          <article class="feature">
-            <h3>Fixed Geometry</h3>
-            <p>
-              The relationship between sensors is enforced physically, aiming for stable extrinsics and consistent capture conditions.
-            </p>
-          </article>
-
-          <article class="feature">
-            <h3>Calibration First</h3>
-            <p>
-              Calibration is treated as a controlled prerequisite, not something re-estimated continuously during capture.
-            </p>
-          </article>
-
-          <article class="feature">
-            <h3>Validation Driven</h3>
-            <p>
-              The goal is measurable consistency: repeatable results, predictable behavior, and clear verification steps.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="why" class="section alt">
-      <div class="container">
-        <div class="section-head">
-          <h2>Why this approach</h2>
-          <p>
-            Many spatial pipelines rely on probabilistic estimation that can drift or vary across runs.
-            A hardware-enforced baseline aims to reduce variance and improve confidence in the resulting spatial media.
-          </p>
-        </div>
-
-        <div class="grid-2">
-          <div class="panel">
-            <h3>Problem signals</h3>
-            <ul>
-              <li>Drift and low repeatability between sessions</li>
-              <li>Sensitivity to scene texture and operator behavior</li>
-              <li>Calibration complexity and human error risk</li>
-              <li>Hard-to-verify outcomes in real-world capture</li>
-            </ul>
-          </div>
-
-          <div class="panel">
-            <h3>Intended outcomes</h3>
-            <ul>
-              <li>More repeatable capture conditions</li>
-              <li>Improved metrical consistency where applicable</li>
-              <li>Clear, testable workflow steps</li>
-              <li>A practical base for further pipeline development</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="status" class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2>Status</h2>
-          <p>
-            We are currently validating core assumptions and refining the capture-to-playback workflow.
-            The focus is on PoC stability, repeatability tests, and preparing for acceleration.
-          </p>
-        </div>
-
-        <div class="timeline">
+        <div class="timeline glass">
           <div class="step">
-            <div class="step-dot" aria-hidden="true"></div>
-            <div class="step-body">
-              <h3>Now</h3>
-              <p>PoC rig iterations, pipeline PoC, initial validation recordings.</p>
+            <div class="step__num">01</div>
+            <div class="step__body">
+              <div class="step__title">Prototype rig iterations</div>
+              <div class="step__desc">Refine physical baseline, stability, repeatability.</div>
             </div>
           </div>
 
           <div class="step">
-            <div class="step-dot" aria-hidden="true"></div>
-            <div class="step-body">
-              <h3>Next</h3>
-              <p>Expanded testing, repeatability benchmarks, refinement of calibration workflow.</p>
+            <div class="step__num">02</div>
+            <div class="step__body">
+              <div class="step__title">PoC capture + playback loop</div>
+              <div class="step__desc">Demonstrate end-to-end workflow using captured material.</div>
             </div>
           </div>
 
           <div class="step">
-            <div class="step-dot" aria-hidden="true"></div>
-            <div class="step-body">
-              <h3>Acceleration goal</h3>
-              <p>Technical validation with partners, stronger evidence base, and scope definition for v1.</p>
+            <div class="step__num">03</div>
+            <div class="step__body">
+              <div class="step__title">Pilot validation readiness</div>
+              <div class="step__desc">Define test criteria, collect proof, prepare partner-facing demo.</div>
             </div>
           </div>
         </div>
 
-        <div class="callout">
-          <strong>Collaboration mode:</strong>
-          We are open to technical conversations, validation pathways, and acceleration programs.
-          We do not share enabling mechanics publicly.
+        <div class="note glass">
+          <strong>Note:</strong> The public site is intentionally concise. We can share a short private deck and demo clips when relevant.
         </div>
       </div>
     </section>
 
-    <section id="team" class="section alt">
+    <section class="section">
       <div class="container">
-        <div class="section-head">
+        <div class="section__head">
           <h2>Team</h2>
           <p>
-            An interdisciplinary team combining applied imaging practice, hardware prototyping, and product execution.
+            Two-person core with clear split between product/operations and technical R&D. Select specialists engaged as needed.
           </p>
         </div>
 
-        <div class="grid-2">
-          <div class="person">
+        <div class="grid2">
+          <article class="card glass">
             <h3>Tomasz Dołęga</h3>
-            <p class="role">Co-founder • Business, operations, product direction</p>
-            <p>
-              Focused on project execution, validation planning, go-to-market preparation and partner outreach.
-              Background across imaging practice and long-term business leadership.
-            </p>
-            <p class="links">
-              <a href="https://www.linkedin.com/in/tomdolega/" target="_blank" rel="noreferrer">LinkedIn</a>
-            </p>
-          </div>
+            <p class="muted">Product, operations, go-to-market, partnerships.</p>
+            <ul class="list">
+              <li>Applied R&D coordination and delivery planning</li>
+              <li>Validation strategy, documentation, partner readiness</li>
+              <li>Execution, operations, and stakeholder communication</li>
+            </ul>
+          </article>
 
-          <div class="person">
+          <article class="card glass">
             <h3>Martin Jędrzejewski</h3>
-            <p class="role">Co-founder • Technical lead, R&D</p>
-            <p>
-              Focused on system design, prototyping, capture workflow development and technical validation.
-              Hands-on development across the pipeline and hardware iterations.
-            </p>
-            <p class="links">
-              <span class="muted">LinkedIn link optional</span>
-            </p>
-          </div>
+            <p class="muted">Technology, system development, prototyping.</p>
+            <ul class="list">
+              <li>Rig design, technical architecture, iteration loop</li>
+              <li>Engineering validation and capture workflow development</li>
+              <li>Hands-on prototyping and technical testing</li>
+            </ul>
+          </article>
         </div>
-
-        <p class="fineprint">
-          We keep public descriptions high level to protect IP and maintain clean disclosure boundaries.
-        </p>
       </div>
     </section>
 
-    <section id="contact" class="section">
+    <section id="contact" class="section section--alt">
       <div class="container">
-        <div class="section-head">
+        <div class="contact glass">
           <h2>Contact</h2>
           <p>
-            If you are an accelerator, R&D partner, or technical evaluator and want to discuss validation and next steps, reach out.
+            If you’re exploring applied R&D collaboration, validation environments, or acceleration support,
+            reach out directly:
           </p>
-        </div>
 
-        <div class="contact-grid">
-          <div class="card">
-            <h3>Email</h3>
-            <p class="muted">Use email for first contact. We can share a controlled technical summary under NDA if needed.</p>
-            <a class="btn primary" href="mailto:contact@icort.pro">contact@icort.pro</a>
+          <div class="contact__row">
+            <a class="btn btn--primary" href="mailto:hi@icort.pro">hi@icort.pro</a>
+            <button class="btn btn--ghost" id="copyEmail" type="button" aria-label="Copy email">
+              Copy email
+            </button>
           </div>
 
-          <div class="card">
-            <h3>LinkedIn</h3>
-            <p class="muted">Company page and founder profiles.</p>
-            <a class="btn" href="https://www.linkedin.com/company/icort" target="_blank" rel="noreferrer">iCort on LinkedIn</a>
-          </div>
-
-          <div class="card">
-            <h3>Disclosure</h3>
-            <p class="muted">
-              Public content describes capabilities and validation goals. Enabling mechanics remain confidential.
-            </p>
-            <button class="btn" id="copy-summary" type="button">Copy 2-line summary</button>
-            <p class="copied" id="copied" hidden>Copied.</p>
-          </div>
+          <p class="small muted">
+            We reply quickly. If needed, we can share a short deck and demo evidence privately.
+          </p>
         </div>
       </div>
     </section>
-  </main>
 
-  <footer class="footer">
-    <div class="container footer-inner">
-      <p>© <span id="year"></span> iCort Pro. All rights reserved.</p>
-      <p class="muted">
-        Early-stage applied R&D initiative. Not a commercial offer.
-      </p>
-    </div>
-  </footer>
+    <footer class="footer">
+      <div class="container footer__inner">
+        <span>© <span id="year"></span> iCort Pro</span>
+        <span class="footer__sep">•</span>
+        <a href="mailto:hi@icort.pro">hi@icort.pro</a>
+      </div>
+    </footer>
+  </main>
 </body>
 </html>
