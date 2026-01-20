@@ -160,7 +160,7 @@ body::before{
 .hero{
   position: relative;
   z-index: 1;
-  padding: 52px 0 28px;
+  padding: 58px 0 68px;
 }
 
 .hero__grid{
